@@ -25,6 +25,7 @@ import LocationView from "@/views/contact/LocationView"
 import ContactView from "@/views/contact/ContactView"
 import Error404 from "@/views/Error404"
 import EditScreeningView from "./views/admin/EditScreeningView"
+import MainView from "./views/MainView"
 
 export default function Router() {
   const queryClient = new QueryClient()
@@ -32,6 +33,8 @@ export default function Router() {
   return (
     <QueryClientProvider client={queryClient}>
       <Routes>
+        <Route path="" element={<MainView />} ></Route>
+
         <Route path="auth" element={<AuthLayout />}>
           <Route path="login" element={<LoginView />} />
           <Route path="register" element={<RegisterView />} />
