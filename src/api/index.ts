@@ -39,7 +39,7 @@ export async function getMovieByPathname(pathname: string) {
     }
 }
 
-export async function getScreeningByMoviePath(moviePath: string, status: string) {
+export async function getScreeningByMoviePath(moviePath: string, status?: string) {
     try {
         const url = `/screenings/movie/${moviePath}`
         const { data } = await api(url, {
