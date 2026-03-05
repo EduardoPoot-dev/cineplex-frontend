@@ -78,7 +78,7 @@ export async function getOccupiedSeats(screeningId: number) {
 
 export async function getMovieHeader() {
     try {
-        const url = '/movie/header'
+        const url = '/movies/header'
         const { data } = await api(url)
         const movie = MovieSchema.parse(data)
         return movie
