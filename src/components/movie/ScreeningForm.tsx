@@ -19,11 +19,10 @@ export default function ScreeningForm({ register, errors, control}: Props) {
     }
     return (
         <div>
-            <h4 className='font-semibold text-gray-600 mb-2'>Funciones</h4>
             <div className='flex items-start flex-wrap gap-5'>
                 {fields.map((field, i) => (
                     <div key={field.id}>
-                        <div className='flex gap-2 items-start'>
+                        <div className='flex gap-2 items-center'>
                             <div>
                                 <label htmlFor="datetime">Horario:</label>
                                 <input
