@@ -66,7 +66,7 @@ export default function EditSingleSreening({screening} : Props) {
                             />
                             {errors.date && <p className='text-red-600 text-sm'>{errors.date.message}</p>}
                         </div>
-                        <div>
+                        <div className="mt-5">
                             <label htmlFor="price">Precio:</label>
                             <input
                                 id="price"

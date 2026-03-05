@@ -19,7 +19,7 @@ export const MovieSchema = z.object({
     minutesDuration: z.number(),
     rate: z.string(),
     //isAvailable: z.boolean(),
-    hasScreenings: z.boolean(),
+    //hasScreenings: z.boolean(),
     category: CategorySchema
 })
 
