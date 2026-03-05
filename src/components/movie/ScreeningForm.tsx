@@ -19,13 +19,15 @@ export default function ScreeningForm({ register, errors, control}: Props) {
     }
     return (
         <div>
-            <h4 className='font-semibold text-gray-600 mb-2'>Horarios</h4>
+            <h4 className='font-semibold text-gray-600 mb-2'>Funciones</h4>
             <div className='flex items-start flex-wrap gap-5'>
                 {fields.map((field, i) => (
                     <div key={field.id}>
                         <div className='flex gap-2 items-start'>
                             <div>
+                                <label htmlFor="datetime">Horario:</label>
                                 <input
+                                    id='datetime'
                                     key={field.id}
                                     type={'datetime-local'}
                                     {...register(`screenings.${i}.date`, { required: 'La fecha es obligatoria' })}
@@ -33,8 +35,10 @@ export default function ScreeningForm({ register, errors, control}: Props) {
                                 />
                                 {errors?.screenings?.[i]?.date && <p className='text-red-600 text-sm'>{`${errors.screenings[i]?.date.message}`}</p>}
                             </div>
-                            <div>
+                            <div >
+                                <label htmlFor="price">Precio:</label>
                                 <input
+                                    id='price'
                                     key={field.id}
                                     type={'number'}
                                     {...register(`screenings.${i}.price`, { required: 'El precio es obligatorio', min: {value: 0, message: 'El precio debe ser mayor a 0'} })}

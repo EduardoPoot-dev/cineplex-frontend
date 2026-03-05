@@ -57,7 +57,9 @@ export default function EditSingleSreening({screening} : Props) {
                     </div>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div>
+                            <label htmlFor="datetime">Horario:</label>
                             <input
+                                id="datetime"
                                 type={'datetime-local'}
                                 {...register('date', { required: 'La fecha es obligatoria' })}
                                 className="py-2 px-3 border border-gray-300 focus:border-red-300 focus:outline-none focus:ring focus:ring-red-200 focus:ring-opacity-50 rounded-md shadow-sm disabled:bg-gray-100 block"
@@ -65,7 +67,9 @@ export default function EditSingleSreening({screening} : Props) {
                             {errors.date && <p className='text-red-600 text-sm'>{errors.date.message}</p>}
                         </div>
                         <div>
+                            <label htmlFor="price">Precio:</label>
                             <input
+                                id="price"
                                 type={'number'}
                                 {...register('price', { required: 'El precio es obligatorio', min: { value: 0, message: 'El precio debe ser mayor a 0' } })}
                                 className="py-2 px-3 border border-gray-300 focus:border-red-300 focus:outline-none focus:ring focus:ring-red-200 focus:ring-opacity-50 rounded-md shadow-sm disabled:bg-gray-100 block"
