@@ -8,7 +8,7 @@ export default function MovieView() {
   const { isLoading, movie, isError } = useMovie()
 
   if (isLoading) return <p className='mt-7'>Cargando</p>
-  if(isError) return <Navigate to='/404' />
+  if (isError) return <Navigate to='/404' />
   if (movie) return (
     <main className='container mx-auto mt-7 mb-14 lg:px-40'>
       <BackButton path='/home' text='Volver al inicio' />
@@ -28,16 +28,12 @@ export default function MovieView() {
             premiereDate={movie.premiereDate}
           />
 
-          {
-            movie.hasScreenings && (
-              <Link
-                to={`/movie/${movie.path}/screening`}
-                className='w-fit block mt-6 px-8 py-3 text-white font-semibold bg-red-700 rounded-xl'
-              >
-                Comprar boletos
-              </Link>
-            )
-          }
+          <Link
+            to={`/movie/${movie.path}/screening`}
+            className='w-fit block mt-6 px-8 py-3 text-white font-semibold bg-red-700 rounded-xl'
+          >
+            Comprar boletos
+          </Link>
 
           <dl className='mt-6 border-t border-gray-200 py-5'>
             <dt className='font-semibold text-gray-800'>Director</dt>
