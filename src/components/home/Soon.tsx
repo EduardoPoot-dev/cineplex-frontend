@@ -9,18 +9,18 @@ export default function Soon() {
         queryKey: ['movies-soon-home'],
         queryFn: () => getMovies({take: 2, skip: 0, status: 'soon'})
     })
-
     return (
         <div className="pt-20 pb-10 bg-gray-50">
             <Heading
                 textPositionStyle="text-center"
                 title="Próximamente"
                 description="No te pierdas los próximos estrenos"
+                url={data?.rows.length ? '/movies/soon' : undefined}
             />
 
             <div className=" px-5 lg:px-28 py-16 grid grid-cols-1 lg:grid-cols-2 gap-8">
                 {
-                    data && data.rows && (
+                    data && data.rows.length ? (
                         data.rows.map((movie) => (
                             <SoonMovieCard 
                                 key={movie.id}
@@ -31,6 +31,8 @@ export default function Soon() {
                                 path={movie.path}
                             />
                         ))
+                    ) : (
+                        <p>Por el momento no hay películas por estrenarse</p>
                     )
                 }
             </div>

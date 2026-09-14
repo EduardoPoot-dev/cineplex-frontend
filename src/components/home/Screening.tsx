@@ -7,8 +7,10 @@ import { getMovies } from "@/api";
 export default function Screening() {
     const { data } = useQuery({
         queryKey: ['movies'],
-        queryFn: () => getMovies({take: 5, skip: 0, status: 'screening'})
+        queryFn: () => getMovies({take: 5, skip: 0, status: 'screening'}),
+        
     })
+    
 
     return (
         <main className="bg-gray-100 pt-14">
@@ -16,9 +18,10 @@ export default function Screening() {
                 <Heading 
                     title="En cartelera"
                     description="Las mejores películas del momento"
+                    url="/movies"
                 />
 
-                <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-5 py-8 px-5 md:px-0 gap-4">
+                <div className="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 py-8 px-5 md:px-0 gap-4">
                     {
                         data && data.rows && (
                             data.rows.map((movie) => (

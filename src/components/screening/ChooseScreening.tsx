@@ -58,7 +58,7 @@ export default function ChooseScreening({ screenings }: Props) {
                     </h3>
 
                     <div className='mt-7 flex gap-4 flex-wrap'>
-                        {Object.keys(screeningsByDate).map((screening) => (
+                        {screenings.length ? Object.keys(screeningsByDate).map((screening) => (
                             <button
                                 key={screening}
                                 onClick={() => onChooseDate(screening)}
@@ -66,7 +66,9 @@ export default function ChooseScreening({ screenings }: Props) {
                             >
                                 {screening}
                             </button>
-                        ))}
+                        )) : (
+                            <p>No hay funciones disponibles</p>
+                        )}
                     </div>
 
                 </div>
