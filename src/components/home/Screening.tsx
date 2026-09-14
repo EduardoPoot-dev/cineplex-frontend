@@ -21,7 +21,7 @@ export default function Screening() {
                     url="/movies"
                 />
 
-                <div className="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 py-8 px-5 md:px-0 gap-4">
+                <div className="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 py-8 px-5 md:px-0 gap-4">
                     {
                         data && data.rows && (
                             data.rows.map((movie) => (
