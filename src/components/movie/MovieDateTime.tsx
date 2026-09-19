@@ -1,5 +1,7 @@
 import { CalendarIcon } from "@heroicons/react/16/solid";
 import { ClockIcon } from "@heroicons/react/24/outline";
+import { format } from "date-fns"
+import { es } from "date-fns/locale";
 
 interface Props {
     minutesDuration: number
@@ -8,7 +10,10 @@ interface Props {
 }
 
 export default function MovieDateTime({ minutesDuration, hoursDuration, premiereDate } : Props) {
-    const date = new Date(premiereDate)
+    const date = format(new Date(premiereDate), 'PPP', {
+        locale: es
+    })
+    
     return (
         <div className="text-gray-500 mt-8 flex gap-3">
             <div className="flex gap-3">
@@ -17,7 +22,7 @@ export default function MovieDateTime({ minutesDuration, hoursDuration, premiere
             </div>
             <div className="flex gap-3">
                 <CalendarIcon width={20} />
-                <span>{date.getFullYear()}</span>
+                <span>{date}</span>
             </div>
         </div>
     )

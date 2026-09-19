@@ -26,6 +26,7 @@ import ContactView from "@/views/contact/ContactView"
 import Error404 from "@/views/Error404"
 import EditScreeningView from "./views/admin/EditScreeningView"
 import MainView from "./views/MainView"
+import ScreeningPaymentStatus from "./views/sellTickets/ScreeningPaymentStatus"
 
 export default function Router() {
   const queryClient = new QueryClient()
@@ -59,6 +60,10 @@ export default function Router() {
           <Route path="tickets" element={<TicketsLayout />}>
             <Route path="actived" element={<ActivedTicketsView />} />
             <Route path="expired" element={<ExpiredTicketsView />} />
+          </Route>
+
+          <Route path="sell">
+            <Route path="success" element={<ScreeningPaymentStatus />} />
           </Route>
 
           <Route path="movie"  >

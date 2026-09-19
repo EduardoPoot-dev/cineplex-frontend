@@ -1,6 +1,6 @@
 import { isAxiosError } from "axios";
 import api from "@/lib/axios"
-import { CategoriesSchema, MovieSchema, MoviesResponseSchema, OccupiedSeatsResponse, ScreeningResponseSchema, ScreeningSchema, TicketsSchema, userSchema, type CreateUserFormType, type MovieFormValues,  type ScreeningFormValue, type SellFormType, type UserFormType } from "../types";
+import { CategoriesSchema, MovieSchema, MoviesResponseSchema, newSellResponseSchema, OccupiedSeatsResponse, ScreeningResponseSchema, ScreeningSchema, sellSchema, TicketsSchema, userSchema, type CreateUserFormType, type MovieFormValues,  type ScreeningFormValue, type SellFormType, type UserFormType } from "../types";
 import { seats } from "@/data/seats";
 
 type Status = 'soon' | 'screening'
@@ -18,7 +18,7 @@ export async function getMovies(searchParams: {take: number, skip: number, statu
         //console.log(movies.error?.issues)
         return movies.data
     } catch (error) {
-        console.log(error)
+        //console.log(error)
         if (isAxiosError(error) && error.response) {
             throw new Error(error.response.data.error);
         }
@@ -130,7 +130,8 @@ export async function ticketSell({screeningId, seats}: SellFormType) {
     try {
         const url = `/sells/screening/${screeningId}`
         const { data } = await api.post(url, {seats})
-        return data
+        const response = newSellResponseSchema.parse(data)
+        return response
     } catch (error) {
         if (isAxiosError(error) && error.response) {
             throw new Error(error.response.data.error);
@@ -279,6 +280,18 @@ export async function getCreatedMovies(take: number, skip: number) {
     } catch (error) {
          if (isAxiosError(error) && error.response) {
             console.log(error)
+            throw new Error(error.response.data.error);
+        }
+    }
+}
+
+export async function getSellById(sellId: number) {
+    try {
+        const url = `/sells/${sellId}`
+        const { data } = await api(url)
+        return sellSchema.parse(data)
+    } catch (error) {
+        if(isAxiosError(error) && error.response) {
             throw new Error(error.response.data.error);
         }
     }

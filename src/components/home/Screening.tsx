@@ -10,7 +10,6 @@ export default function Screening() {
         queryFn: () => getMovies({take: 5, skip: 0, status: 'screening'}),
         
     })
-    
 
     return (
         <main className="bg-gray-100 pt-14">

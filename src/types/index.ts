@@ -50,6 +50,11 @@ export const userSchema = z.object({
     isAdmin: z.boolean()
 })
 
+export const newSellResponseSchema = z.object({
+    sellId: z.number(),
+    clientSecret: z.string(),
+})
+
 const ticketSchema = z.object({
     id: z.number(),
     total: z.coerce.number(),
@@ -59,6 +64,11 @@ const ticketSchema = z.object({
     }),
 })
 export const TicketsSchema = z.array(ticketSchema)
+
+export const sellSchema = z.object({
+    id: z.number(),
+    payment_status: z.string(),
+})
 
 export type SellFormType = {
     screeningId: number
@@ -98,6 +108,7 @@ export type ScreeningsFormValues = {
     screenings: ScreeningFormValue[]
 }
 
+export type NewSellResponse = z.infer<typeof newSellResponseSchema>
 export type MoviesResponse = z.infer<typeof MoviesResponseSchema>
 export type Ticket = z.infer<typeof ticketSchema>
 export type Category = z.infer<typeof CategorySchema>

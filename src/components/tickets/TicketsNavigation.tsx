@@ -4,12 +4,12 @@ import { Link, useLocation } from 'react-router'
 const navigation = [
   {
     path: '/tickets/actived',
-    name: 'Próximos',
+    name: 'Boletos activos',
     icon: <TicketIcon width={20} />
   },
   {
     path: '/tickets/expired',
-    name: 'Historial',
+    name: 'Boletos expirados',
     icon: <ClockIcon width={20} />
   },
 ]
