@@ -137,9 +137,7 @@ export default function ScreeningSellResume() {
                                 stripe={stripePromise}
                                 options={{ clientSecret, appearance: { theme: 'stripe' } }}
                             >
-                                 <StripeElements
-                                    sellId={sellId}
-                                />
+                                 <StripeElements />
                             </Elements>
                         </div>
                     )}
