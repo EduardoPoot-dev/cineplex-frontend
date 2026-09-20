@@ -4,10 +4,9 @@ import { useSell } from "@/hooks/useSell"
 import { format } from "date-fns"
 import { es } from "date-fns/locale";
 import { formatCurrency, formatImageScr } from "@/utils";
-import { Navigate, useParams } from "react-router";
+import { Navigate, useNavigate, useParams } from "react-router";
 import { useMutation } from "@tanstack/react-query";
 import { ticketSell } from "@/api";
-import { toast } from 'react-toastify'
 import { useState } from "react";
 import { loadStripe } from '@stripe/stripe-js'
 import StripeElements from "@/components/payment/StripeElements";
@@ -16,13 +15,14 @@ import { Elements } from "@stripe/react-stripe-js";
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY)
 
 export default function ScreeningSellResume() {
+    const { screeningId } = useParams()
+    const navigate = useNavigate()
+
     const [ disabledButton, setDisabledButton ] = useState(false)
     const { movie } = useMovie()
     const { state } = useSell()
-    const { screeningId } = useParams()
     const { date, seats, total } = state
     const seatsQuantity = seats.length
-
     const [clientSecret, setClientSecret] = useState<string | null>(null)
     const [sellId, setSellId] = useState<number | null>(null)
 
@@ -32,11 +32,11 @@ export default function ScreeningSellResume() {
             setClientSecret(res?.clientSecret ?? null)
             setSellId(res?.sellId ?? null)
         },
-        onError: (e) => () => {
-            toast.error(e.message)
+        onError: () => {
             setClientSecret(null)
             setSellId(null)
             setDisabledButton(false)
+            navigate('/auth/login')
         }
     })
 

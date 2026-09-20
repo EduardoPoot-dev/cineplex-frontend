@@ -130,6 +130,7 @@ export async function ticketSell({screeningId, seats}: SellFormType) {
     try {
         const url = `/sells/screening/${screeningId}`
         const { data } = await api.post(url, {seats})
+        console.log(data)
         const response = newSellResponseSchema.parse(data)
         return response
     } catch (error) {
